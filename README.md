@@ -154,10 +154,10 @@ While the final format of each write-up varies depending on the specific threat 
 ## 🔻 Threat Hunting & D3FEND Playbooks
 Beyond reactive SIEM triaging, I develop proactive KQL hunting queries and active defense mechanisms (mapped to MITRE D3FEND):
 
-* [**PowerShell Encoded Command Hunting**](./02-Threat-Hunting-Playbooks/KQL-PowerShell-Obfuscation/README.md) - KQL playbook to hunt Base64 obfuscation.
-* [**LSASS Access Hunting**](./02-Threat-Hunting-Playbooks/KQL-LSASS-Memory-Dumping/README.md) - KQL playbook for memory dumping and `.dmp` file creation.
-* [**Auth Anomalies Hunting**](./02-Threat-Hunting-Playbooks/KQL-EntraID-Auth-Anomalies/README.md) - KQL playbook targeting Impossible Travel and MFA fatigue.
-* [**Active Defense: Honeytokens**](./02-Threat-Hunting-Playbooks/Active-Defense-Honeytokens/README.md) - Deployment of Canarytokens for zero-false-positive alerting.
+* [**PowerShell Encoded Command Hunting**](/02-Threat-Hunting-Playbooks/powershell-encoded/hunting.md) - KQL playbook to hunt Base64 obfuscation.
+* [**LSASS Access Hunting**](/02-Threat-Hunting-Playbooks/lsass-access/hunting.md)- KQL playbook for memory dumping and `.dmp` file creation.
+* [**Auth Anomalies Hunting**](/02-Threat-Hunting-Playbooks/authentication-anomalies/README.md) - KQL playbook targeting Impossible Travel and MFA fatigue.
+* [**Active Defense: Honeytokens**](/02-Threat-Hunting-Playbooks/active-defence-honeytokens/active-defence-honeytokens.md) - Deployment of Canarytokens for zero-false-positive alerting.
 
 ---
 ## 🔻 Application Security & Secure Code Review
