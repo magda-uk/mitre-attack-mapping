@@ -5,6 +5,13 @@ This analysis investigates Windows Security Event Logs associated with authentic
 
 By examining **Event ID 4625 (Failed Logon)** and subsequent **Event ID 4624 (Successful Logon)**, this document outlines how security monitoring detects credential testing and maps the operational logon types (Interactive, Network, Service, Unlock, and Cached) to understand system activity and access vectors.
 
+## 🟪 MITRE ATT&CK Mapping
+* **Tactics:** TA0008 - Lateral Movement & TA0006 - Credential Access
+* **Techniques:** T1021 - Remote Services, T1110 - Brute Force & T1078 - Valid Accounts
+* **Sub-techniques:** T1021.002 - SMB/Windows Admin Shares & T1110.001 - Password Guessing
+
+*Context:* This analysis highlights the critical SOC capability of monitoring Windows Event IDs 4625 and 4624. Identifying Logon Type 3 (Network) failures is essential to catch adversaries attempting to pivot via SMB probing (T1021.002) and credential guessing (T1110.001), while monitoring successful logons helps detect the potential abuse of compromised Valid Accounts (T1078).
+
 ## 🟪 Case Study 1: Analysing Authentication Failures (Event ID 4625)
  
 ![Event 4625 - Failed Logon](./images/4625-4.png)
@@ -40,7 +47,7 @@ Securing endpoints against unauthorized credential access and maintaining robust
 1.  **Enforce Account Lockout Policies:** Configure thresholds to temporarily lock endpoints after a specified number of consecutive failed authentication attempts (Event ID 4625), mitigating automated password guessing.
 2.  **Audit Policy Tuning:** Ensure advanced audit configurations actively monitor both success and failure states for account logon and logon/logoff categories to maintain high fidelity in SIEM/Log analysis.
 3.  **Network Boundary Restrictions:** Restrict unnecessary inbound SMB (Port 445) and remote management ports at the host firewall level to reduce the local attack surface.
-4. **MITRE ATT&CK Mapping:** Align detection engineering and incident response playbooks with the MITRE ATT&CK framework by mapping these authentication anomalies directly to **T1110 (Brute Force)** and the potential risk of **T1078 (Valid Accounts)**.
+
 
 ## 🪪 Author
 
