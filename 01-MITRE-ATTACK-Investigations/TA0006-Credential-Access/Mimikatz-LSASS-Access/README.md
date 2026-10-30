@@ -16,7 +16,7 @@ The investigation was initiated by a Sysmon Event ID 10 (ProcessAccess) alert. T
 ### Sysmon Event ID 10 (Process Access)
 The following telemetry was captured during the triage phase:
 
-![Sysmon Event 10 - Mimikatz Accessing LSASS](../id10-lsass-access/lsass-access.png)
+![Sysmon Event 10 - Mimikatz Accessing LSASS](./images/lsass-access.png)
 
 **Key Finding Breakdown:**
 *   **SourceImage:** `C:\Users\IEUser\Desktop\mimikatz_trunk\Win32\mimikatz.exe`
