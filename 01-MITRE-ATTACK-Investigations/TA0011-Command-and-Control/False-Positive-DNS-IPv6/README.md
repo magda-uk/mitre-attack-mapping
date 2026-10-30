@@ -25,7 +25,7 @@ User: Azul_Fifty\magda
 ```
 ## 🔸 Telemetry Artifacts
 
-![Sysmon Event ID 3 Network Connection Analysis](/3.log-analysis/sysmon/id3-network-connections/images/local-subnet.png)
+![Sysmon Event ID 3 Network Connection Analysis](./images/local-subnet.png)
 
 ---
 
