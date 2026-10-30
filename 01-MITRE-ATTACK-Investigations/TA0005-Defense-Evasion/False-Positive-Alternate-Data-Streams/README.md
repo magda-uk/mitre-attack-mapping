@@ -130,9 +130,11 @@ The ADS is used for security tagging, not hiding data.
 ---
 
 ## 🔹 MITRE ATT&CK Mapping
+* **Tactic:** TA0005 - Defense Evasion
+* **Technique:** T1564 - Hide Artifacts
+* **Sub-technique:** T1564.004 - NTFS File Attributes
 
-Although ADS can be used for **T1564.004 — Hide Artifacts: NTFS File Attributes**,  
-this instance is **benign** and part of Windows’ security model.
+*Context:* While this specific Event ID 15 captures the benign creation of a `Zone.Identifier` stream (Mark-of-the-Web) by a web browser, attackers frequently abuse Alternate Data Streams (ADS) to conceal malicious payloads and bypass static defenses (T1564.004). Triaging this telemetry is essential for tuning SOC alerts and distinguishing legitimate browser metadata from hidden malicious artifacts.
 
 ---
 
