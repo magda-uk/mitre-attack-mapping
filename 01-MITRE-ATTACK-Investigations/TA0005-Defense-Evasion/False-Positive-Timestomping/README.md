@@ -115,14 +115,11 @@ The timestamp change is part of VS Code’s normal caching behaviour.
 ---
 
 ## 🔹 MITRE ATT&CK Mapping
+* **Tactic:** TA0005 - Defense Evasion
+* **Technique:** T1070 - Indicator Removal
+* **Sub-technique:** T1070.006 - Timestomp
 
-Although Sysmon labels this under **T1099 — Timestomp**, this instance is:
-
-- benign  
-- non‑malicious  
-- application‑driven timestamp restoration
-
-This evidence is useful for understanding false positives related to timestomping.
+*Context:* Although Sysmon flags this behaviour under the legacy Timestomp mapping, this instance is a benign, application-driven timestamp restoration. Analysing this telemetry is crucial for SOC analysts to build robust exclusion filters, reducing false positives related to developer tools (like VS Code) while maintaining visibility over genuine anti-forensic timestomping attempts (T1070.006).
 
 ---
 
