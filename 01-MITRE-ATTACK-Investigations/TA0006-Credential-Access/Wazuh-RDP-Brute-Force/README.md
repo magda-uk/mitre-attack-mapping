@@ -4,6 +4,13 @@
 
 The simulation demonstrates pivoting from standard brute-force tools blocked by Network Level Authentication (NLA) to native RDP clients, and the subsequent detection of Event ID 4625 using Wazuh SIEM.
 
+## MITRE ATT&CK Mapping
+* **Tactic:** TA0006 - Credential Access
+* **Technique:** T1110 - Brute Force
+* **Sub-technique:** T1110.001 - Password Guessing
+
+*Context:* This laboratory simulates a targeted brute-force attack against an RDP service (T1110.001). It highlights how adversaries can pivot to native clients (`xfreerdp`) to bypass Network Level Authentication (NLA) restrictions that block standard brute-force tools, emphasising the importance of monitoring Windows Event ID 4625 (Failed Logon) for prompt detection and containment.
+
 ## Red Team: Reconnaissance & Simulation
 The investigation began with active reconnaissance against the target endpoint to identify open services, specifically checking for RDP availability.
 
