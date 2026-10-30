@@ -8,10 +8,17 @@
 ## 1. Executive Summary
 A critical security event was detected involving unauthorized access to the Local Security Authority Subsystem Service (`lsass.exe`) process memory. The telemetry indicates the execution of the well-known credential extraction tool, Mimikatz, directly from a user's desktop, successfully requesting memory read access to LSASS. 
 
-## 2. Triggering Event (The Alert)
+## 2. MITRE ATT&CK Mapping
+* **Tactic:** TA0006 - Credential Access
+* **Technique:** T1003 - OS Credential Access
+* **Sub-technique:** T1003.001 - LSASS Memory
+
+*Context:* This investigation highlights a classic credential dumping attack using Mimikatz. Detecting the specific `GrantedAccess` rights (`0x1010`) requested by an untrusted process opening a handle to `lsass.exe` (Sysmon Event ID 10) is a high-fidelity method for SOC analysts to identify and contain in-memory credential theft (T1003.001) before lateral movement occurs.
+
+## 3. Triggering Event (The Alert)
 The investigation was initiated by a Sysmon Event ID 10 (ProcessAccess) alert. This event is triggered when a process opens a handle to another process, which is heavily monitored when the target is `lsass.exe` due to its role in managing system credentials.
 
-## 3. Log Analysis & Evidence
+## 4. Log Analysis & Evidence
 
 ### Sysmon Event ID 10 (Process Access)
 The following telemetry was captured during the triage phase:
@@ -28,7 +35,7 @@ The following telemetry was captured during the triage phase:
 *   **CallTrace:** 
     *   *Analysis:* The call stack confirms the execution flow originated from the `mimikatz.exe` binary itself, validating the source of the malicious API call.
 
-## 4. Conclusion
+## 5. Conclusion
 This is a **True Positive** for Credential Access. An attacker successfully executed Mimikatz (specifically utilizing modules like `sekurlsa::logonpasswords` based on the requested access rights) to dump credentials from memory. 
 
 In a real-world scenario, the immediate response would involve isolating the host (PC04.example.corp), resetting the compromised user's credentials (and potentially any service accounts exposed on that host), and initiating a wider hunt for lateral movement originating from this endpoint.
