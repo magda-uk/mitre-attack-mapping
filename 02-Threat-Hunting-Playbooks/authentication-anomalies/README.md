@@ -57,7 +57,7 @@ SigninLogs
 
 To demonstrate this hunting hypothesis in a live environment, a brute force attack was simulated against a test account (`jsmith`). The telemetry was ingested into Microsoft Sentinel via the Entra ID data connector and analysed using Kusto Query Language (KQL).
 
-![Sentinel KQL Query - Brute Force Detection](/images/logs.png) 
+![Sentinel KQL Query](/images/logs.png) 
 
 **Analysis of Findings:**
 
