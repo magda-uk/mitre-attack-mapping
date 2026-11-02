@@ -27,27 +27,20 @@ A secondary Python script then emulates a ransomware encryption event, triggerin
 
     Centralised logging and alert correlation.
 
-## ◾ Detection Capabilities & MITRE ATT&CK Mapping
 
-This investigation focuses on identifying the cryptographic and destructive phases of a ransomware lifecycle:
 
-* **T1005 (Data from Local System):** 
+## ◾ MITRE ATT&CK Mapping: Ransomware Lifecycle
 
-    The threat emulation script programmatically iterates through local directories (`os.walk`) to identify and collect business-critical inventory data.
+This investigation focuses on identifying both the data gathering (Collection) and the destructive cryptographic phases (Impact) of a ransomware lifecycle.
 
-* **T1022 (Data Encrypted - Collection Phase):** 
+### TA0009 - Collection
+* **T1005 (Data from Local System):** The threat emulation script programmatically iterates through local directories (`os.walk`) to identify and collect business-critical inventory data.
+* **T1022 (Data Encrypted):** Prior to destruction, the collected operational data is obscured using Base64 encoding to simulate malicious cryptographic processing during the collection phase.
 
-    Prior to destruction, the collected operational data is obscured using Base64 encoding to simulate malicious cryptographic processing.
-
-* **T1486 (Data Encrypted for Impact):** 
-
-    Mass file extension changes and content modification.
-* **T1485 (Data Destruction):** 
-
-    Deletion of original system files following encryption.
-* **T1490 (Inhibit System Recovery):** 
-
-    Modifying critical operational data (simulated PI records).
+### TA0040 - Impact
+* **T1486 (Data Encrypted for Impact):** Mass file extension changes and content modification across the targeted directories.
+* **T1485 (Data Destruction):** Deletion of original system files immediately following their encryption to enforce data loss.
+* **T1490 (Inhibit System Recovery):** Modifying critical operational data (simulated Perpetual Inventory records) to prevent seamless system restoration.
 
 ## ◾ Investigation Phases
 
