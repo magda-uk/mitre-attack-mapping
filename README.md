@@ -97,9 +97,6 @@ While the final format of each write-up varies depending on the specific threat 
 - [**PowerShell ScriptBlock Logging & De-obfuscation (Event 4104)**](./01-MITRE-ATTACK-Investigations/TA0005-Stealth/PowerShell-Deobfuscation-4104/README.md)
   * **T1059.001: PowerShell** / **T1027: Obfuscated Files or Information**
   * **Focus:** Hunting Base64 obfuscation and decoding ScriptBlock logs in Sysmon Event 4104.
-- [**VS Code Timestomping Hands-On Evidence (Event 2)**](./01-MITRE-ATTACK-Investigations/TA0005-Stealth/False-Positive-Timestomping/README.md)
-  * **T1099: Timestomp**
-  * **Focus:** Identifying timestamp manipulation (MACE) and baseline file creation anomalies.
 - [**Sysmon Event ID 8 (CreateRemoteThread): WerFault.exe Injection**](./01-MITRE-ATTACK-Investigations/TA0005-Stealth/False-Positive-Process-Injection/README.md)
   * **T1055: Process Injection**
   * **Focus:** False positive tuning for benign remote thread creation during Windows Error Reporting debugging.
@@ -108,7 +105,9 @@ While the final format of each write-up varies depending on the specific threat 
   * **Focus:** Explaining Mark-of-the-Web (Zone.Identifier) during standard Chrome PDF downloads.
 
 ### 🛡️ Defense Impairment (TA0112)
-- >*(Coming Soon)*
+- [**VS Code Timestomping Hands-On Evidence (Event 2)**](./01-MITRE-ATTACK-Investigations/TA0112-Defense-Impairment/False-Positive-Timestomping/README.md)
+  * **T1070.006: Indicator Removal: Timestomp**
+  * **Focus:** Identifying timestamp manipulation (MACE) and baseline file creation anomalies to protect forensic timelines.
 
 ### 🔑 Credential Access (TA0006)
 - [**SOC Lab: RDP Brute Force & NLA Evasion**](./01-MITRE-ATTACK-Investigations/TA0006-Credential-Access/Wazuh-RDP-Brute-Force/README.md)
