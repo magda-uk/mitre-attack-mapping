@@ -8,8 +8,9 @@
  ![PowerShell Logging](https://img.shields.io/badge/PowerShell-Logging-5391FE?style=flat-square&logo=powershell&logoColor=white)
  ![KQL](https://img.shields.io/badge/KQL-Queries-6f42c1?style=flat-square)
 
-**MITRE ATT&CK:** T1078 : Valid Accounts  
-**Category:** Threat Hunting / Identity & Access  
+**MITRE ATT&CK Tactics:** TA0001 Initial Access / TA0003 Persistence  
+**MITRE ATT&CK Technique:** T1078 Valid Accounts  
+**Category:** Threat Hunting / Identity & Access
 
 ---
 
@@ -56,7 +57,7 @@ SigninLogs
 
 To demonstrate this hunting hypothesis in a live environment, a brute force attack was simulated against a test account (`jsmith`). The telemetry was ingested into Microsoft Sentinel via the Entra ID data connector and analysed using Kusto Query Language (KQL).
 
-![Sentinel KQL Query - Brute Force Detection](/4.hunting/authentication-anomalies/Microsofot%20Sentinel%20Logs.png) 
+![Sentinel KQL Query - Brute Force Detection](/logs.png) 
 
 **Analysis of Findings:**
 
