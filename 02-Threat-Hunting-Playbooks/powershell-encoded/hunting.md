@@ -6,17 +6,18 @@
 ![Execution](https://img.shields.io/badge/Execution-TA0002-red?style=flat-square)
 ![Defense Evasion](https://img.shields.io/badge/Defense%20Evasion-TA0005-darkred?style=flat-square)
 
+ **MITRE ATT&CK:** T1059.001  PowerShell  
 
-**MITRE ATT&CK:** T1059.001  PowerShell  
 **Tactics:** Execution (TA0002), Defense Evasion (TA0005)
+
 **Category:** Threat Hunting / Manual Investigation  
 
 
 
 ## 🔸  Objective
-Identify suspicious or malicious PowerShell activity involving encoded commands, obfuscation, or execution patterns commonly used in initial access, persistence, or lateral movement.
+To proactively detect and investigate the execution of obfuscated PowerShell commands (Base64 encoding) and execution policy bypasses. 
 
-Encoded PowerShell is a **high‑signal behaviour**. Legitimate admin usage is rare; attackers use encoding to hide payloads, bypass logging, and execute malicious scripts.
+Because legitimate administrative use of `-EncodedCommand` is exceptionally rare in standard baselines, this technique serves as a high-fidelity indicator of malicious intent; typically signaling the deployment of fileless malware, C2 stagers, or evasion tactics.
 
 
 
@@ -26,19 +27,21 @@ Encoded PowerShell is a **high‑signal behaviour**. Legitimate admin usage is r
 DeviceProcessEvents
 | where FileName =~ "powershell.exe"
 | where ProcessCommandLine has_any ("-enc", "-EncodedCommand", "-ep bypass", "-ExecutionPolicy Bypass")
+// Pro-Tip: Exclude known, approved administrative automation in your specific environment to reduce noise:
+// | where InitiatingProcessFileName !in~ ("sccm.exe", "taniumclient.exe", "sqlservr.exe")
 | project Timestamp, DeviceName, InitiatingProcessFileName, ProcessCommandLine, AccountName
 | order by Timestamp desc
 ```
 ## 🔸 Why This Matters
-Attackers frequently rely on encoded PowerShell to:
 
-- Obfuscate malicious payloads  
-- Execute C2 stagers  
-- Download remote scripts  
-- Run credential theft modules  
-- Evade basic detection rules  
+Threat actors and penetration testers (using frameworks like Cobalt Strike or PowerShell Empire) heavily rely on encoded PowerShell to achieve:
 
-Any encoded command warrants investigation.
+- **Defence Evasion:** Bypassing traditional signature-based AV and masking command-line arguments from basic logging.
+- **Fileless Execution:** Running payloads directly in memory (via `IEX`) without dropping executable files onto the disk.
+- **Payload Delivery:** Silently downloading secondary stages, C2 beacons, or ransomware droppers.
+- **In-Memory Credential Theft:** Executing modules like `Invoke-Mimikatz` securely within the PowerShell process space.
+
+Every instance of encoded PowerShell outside of explicitly approved IT automation warrants immediate investigation.
 
 
 
