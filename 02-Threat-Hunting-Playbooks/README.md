@@ -26,11 +26,11 @@ Across this directory, you will find a combination of:
 
 ## ➡️ Contents
 
-### 1. [PowerShell Encoded Command Hunting](/02-Threat-Hunting-Playbooks/powershell-encoded/hunting.md)
+### 1. [PowerShell Encoded Command Hunting](/02-Threat-Hunting-Playbooks/powershell-encoded//README.md)
 - **MITRE ATT&CK:** `T1059.001 — Command and Scripting Interpreter: PowerShell`
 - **Overview:** Detects the use of Base64-encoded PowerShell commands, a common technique for hiding malicious payloads, downloading remote scripts, executing C2 stagers, and evading basic logging.
 
-### 2. [OS Credential Dumping & LSASS Access Hunting](/02-Threat-Hunting-Playbooks/lsass-access/hunting.md)
+### 2. [OS Credential Dumping & LSASS Access Hunting](/02-Threat-Hunting-Playbooks/lsass-access//README.md)
 - **MITRE ATT&CK:** `T1003 — OS Credential Dumping`
 - **Overview:** Identifies attempts to access LSASS or explorer.exe memory using tools such as ProcDump and Mimikatz. Includes KQL correlation with outbound network exfiltration and automated SOAR response.
 
@@ -38,7 +38,7 @@ Across this directory, you will find a combination of:
 - **MITRE ATT&CK:** `T1078 — Valid Accounts`
 - **Overview:** Detects suspicious authentication patterns in the cloud, focusing on impossible travel, MFA fatigue, and brute-force spikes using custom Kusto Query Language (KQL) bins.
 
-### 4. [Active Defence: Honeytokens & Cyber Deception](/02-Threat-Hunting-Playbooks/active-defence-honeytokens/active-defence-honeytokens.md)
+### 4. [Active Defence: Honeytokens & Cyber Deception](/02-Threat-Hunting-Playbooks/active-defence-honeytokens//README.md)
 - **MITRE D3FEND:** `D3-DO Decoy Object`
 - **Overview:** Demonstrates the deployment of file-based honeytokens (decoy files) to generate high-fidelity, zero-false-positive alerts in Microsoft Sentinel when adversaries attempt to access sensitive directories.
 
