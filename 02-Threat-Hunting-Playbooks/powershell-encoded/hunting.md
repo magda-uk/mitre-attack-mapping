@@ -177,8 +177,13 @@ Red Flags:
 For hands-on examples of applying this triage workflow to real-world Sysmon telemetry, refer to the associated investigation case studies in this portfolio:
 
 🔗 **[Investigation Case 1: Threat Hunting for PowerShell Obfuscation (Base64 Decoding)](https://github.com/magda-uk/soc-analyst-portfolio/blob/main/2.investigations/02-threat-hunt-powershell.md)**  
+*(Phase 1: Identification: Understanding and manually decoding the obfuscation technique).*    
 🔗 **[Investigation Case 2: Phishing via MS Word & PowerShell Execution (True Positive)](https://github.com/magda-uk/soc-analyst-portfolio/blob/main/2.investigations/05-true-positive-powershell.md)**  
+*(Phase 2: Triage & Response: Detecting and isolating a live evasion attempt during a LotL malware infection).*    
+🔗 **[Investigation Case 3: Defeating Obfuscation with PowerShell ScriptBlock Logging (Event ID 4104)](https://github.com/magda-uk/soc-analyst-portfolio/blob/main/7.hands-on/day3-powershell-logging/day3-powershell-logging.md)**  
+*(Phase 3: Detection Engineering: Configuring advanced telemetry to automatically unmask the payload and reveal the adversary's true intent.).*
 
+Together, these three investigations represent a complete SOC operational lifecycle - from identifying the obfuscation, to hunting a live threat, and finally engineering a robust detection mechanism to defeat the evasion at scale.
 
 ## 🔸 Analyst Notes
 
