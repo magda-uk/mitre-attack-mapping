@@ -1,19 +1,20 @@
-# 🕵️‍♀️ Threat Hunting Playbook: LSASS Access & Credential Dumping (T1003.001)
+# 🔺 Threat Hunting Playbook🔺          
+# LSASS Access & Credential Dumping (T1003.001) 
 
 ![Defender for Endpoint](https://img.shields.io/badge/Defender_for_Endpoint-Telemetry-00A4EF?style=flat-square&logo=microsoft&logoColor=white)
 ![KQL](https://img.shields.io/badge/KQL-Detection_Logic-6f42c1?style=flat-square)
 ![MITRE ATT&CK](https://img.shields.io/badge/MITRE%20ATT&CK%C2%AE-T1003.001-FF6600?style=flat-square)
 ![Credential Access](https://img.shields.io/badge/Credential%20Access-TA0006-red?style=flat-square)
 
-**MITRE ATT&CK:** T1003.001 — OS Credential Dumping: LSASS Memory  
+**MITRE ATT&CK:** T1003.001 OS Credential Dumping: LSASS Memory  
 **Tactics:** Credential Access (TA0006)  
 **Category:** Threat Hunting / Manual Investigation  
 
-## ▫️ Objective
+## 🔺 Objective
 
 Proactively identify attempts to access, read, or dump the memory space of the Local Security Authority Subsystem Service (`lsass.exe`). Because LSASS manages local security policies, domain authentication, and stores highly sensitive material (NTLM hashes, Kerberos tickets, and occasionally plaintext credentials), any non-system interaction with this process is a critical security event indicating potential credential theft.
 
-## ▫️ Primary Hunting Query (KQL)
+## 🔺 Primary Hunting Query (KQL)
 
 ```kql
 DeviceProcessEvents 
@@ -25,7 +26,7 @@ DeviceProcessEvents
 > **Pro-Tip: Sysmon Event ID 10 (Process Access)**
 > Process creation events (Event ID 1) only show the tools being executed. To catch custom malware directly reading LSASS memory without spawning known LOLBins, query `DeviceEvents` for Sysmon Event ID 10 where the `TargetImage` is `lsass.exe` and look for suspicious `GrantedAccess` codes (e.g., `0x1F0FFF` or `0x1010`).
 
-## ▫️ Why This Matters
+## 🔺 Why This Matters
 
 `lsass.exe` is the crown jewel of a Windows endpoint. Threat actors and Red Teams target LSASS memory to extract authentication material offline using tools like Mimikatz, Cobalt Strike, or custom loaders. Successfully dumping LSASS allows an attacker to:
 
@@ -36,7 +37,7 @@ DeviceProcessEvents
 
 
 
-## ▫️ Investigation Workflow
+## 🔺 Investigation Workflow
 
 ### ▫️1. Identify the Dumping Technique
 
@@ -83,7 +84,7 @@ Determine which account was used to execute the attack to understand the potenti
 
 
 
-## ▫️ Indicators of Compromise (IoCs)
+## 🔺 Indicators of Compromise (IoCs)
 
 - `rundll32.exe` executing with `comsvcs.dll` and `MiniDump` arguments.
 - Creation of `lsass.dmp` or unexpectedly large files (40MB+) in `Temp` or `Public` folders.
@@ -92,7 +93,7 @@ Determine which account was used to execute the attack to understand the potenti
 
 
 
-## ▫️ Recommended Actions (Incident Response)
+## 🔺 Recommended Actions (Incident Response)
 
 1. **Host Containment:** Isolate the endpoint immediately via EDR to prevent the exfiltration of the dump file and to cut off lateral movement capabilities.
 2. **Credential Revocation:** Reset passwords and revoke active Entra ID / AD sessions for **all** accounts that had active logon sessions on the compromised host, as their credentials must be assumed stolen.
@@ -102,21 +103,21 @@ Determine which account was used to execute the attack to understand the potenti
 
 
 
-## ▫️ Practical Demonstrations (PoCs)
+## 🔺 Practical Demonstrations (PoCs)
 
 Together, these investigations represent a complete SOC operational lifecycle; from identifying the memory dump technique, to hunting a live threat, and finally engineering a robust detection mechanism.
 
-🧷 **[Investigation Case 1: Triage of LSASS Memory Access via Mimikatz (Sysmon Event ID 10)](https://github.com/magda-uk/soc-analyst-portfolio/blob/main/3.log-analysis/sysmon/id10-lsass-access/evtx-mimikatz-lsass-access.md)**  
+🔺 **[Investigation Case 1: Triage of LSASS Memory Access via Mimikatz (Sysmon Event ID 10)](https://github.com/magda-uk/soc-analyst-portfolio/blob/main/3.log-analysis/sysmon/id10-lsass-access/evtx-mimikatz-lsass-access.md)**  
 *(Phase 1: Detection: Identifying credential dumping via unauthorized PROCESS_VM_READ memory handles).* 
 
-🧷 **[Investigation Case 2: Threat Hunting Credential Dumping (Procdump) & SOAR Automation](https://github.com/magda-uk/soc-analyst-portfolio/blob/main/2.investigations/06-true-positive-procdump-exfiltration.md)**  
+🔺 **[Investigation Case 2: Threat Hunting Credential Dumping (Procdump) & SOAR Automation](https://github.com/magda-uk/soc-analyst-portfolio/blob/main/2.investigations/06-true-positive-procdump-exfiltration.md)**  
 *(Phase 2 & 3: Triage & Automation: Detecting ProcDump evasion (explorer.exe pivot), exfiltration correlation via KQL, and automated Sentinel response).*
 
-## ▫️ Analyst Notes
+## 🔺 Analyst Notes
 
 > **Analyst Tip:** LSASS access is not an early-stage warning; it is an active, high-impact compromise. If an attacker is dumping LSASS, they already have Local Admin rights and are moving to the lateral movement phase. Act decisively.
 
-## ▫️ Connect with me   
+## 🔺 Connect with me   
 
 
 [![Magda Dominguez LinkedIn](https://img.shields.io/badge/LinkedIn-Magda_Dominguez-6f42c1?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/magda-d-infosec)    
