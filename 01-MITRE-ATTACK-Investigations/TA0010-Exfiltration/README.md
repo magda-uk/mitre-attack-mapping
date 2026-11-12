@@ -29,9 +29,9 @@ Following the successful memory dump, the adversary utilized native Windows bina
 
 | Tactic | Technique | Description |
 | :--- | :--- | :--- |
-| **Credential Access** | [T1003.001 - OS Credential Dumping: LSASS Memory](https://attack.mitre.org/techniques/T1003/001/) | Attempted memory dump of `lsass.exe` using Procdump. |
-| **Credential Access** | [T1003 - OS Credential Dumping (Secondary Target)](https://attack.mitre.org/techniques/T1003/) | Successful memory dump of `explorer.exe` to bypass LSASS protections. |
-| **Exfiltration** | [T1048 - Exfiltration Over Alternative Protocol](https://attack.mitre.org/techniques/T1048/) | Exfiltration of the dumped file via HTTP POST using PowerShell. |
+| **Credential Access (TA0006)** | [T1003.001 - OS Credential Dumping: LSASS Memory](https://attack.mitre.org/techniques/T1003/001/) | Attempted memory dump of `lsass.exe` using Procdump. |
+| **Credential Access (TA0006)** | [T1003 - OS Credential Dumping (Secondary Target)](https://attack.mitre.org/techniques/T1003/) | Successful memory dump of `explorer.exe` to bypass LSASS protections. |
+| **Exfiltration (TA0010)** | [T1048 - Exfiltration Over Alternative Protocol](https://attack.mitre.org/techniques/T1048/) | Exfiltration of the dumped file via HTTP POST using PowerShell. |
 
 ---
 
