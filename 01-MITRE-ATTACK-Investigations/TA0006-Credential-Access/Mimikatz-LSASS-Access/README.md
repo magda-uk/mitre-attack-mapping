@@ -7,6 +7,7 @@
 
 ## 1. Executive Summary
 A critical security event was detected involving unauthorized access to the Local Security Authority Subsystem Service (`lsass.exe`) process memory. The telemetry indicates the execution of the well-known credential extraction tool, Mimikatz, directly from a user's desktop, successfully requesting memory read access to LSASS. 
+> 📖 **Standard Operating Procedure (SOP):** This end-to-end analysis, covering credential dumping telemetry and data exfiltration, follows the detection workflows defined in my [Threat Hunting Playbook: LSASS Access & Credential Dumping](/02-Threat-Hunting-Playbooks/lsass-access/README.md).
 
 ## 2. MITRE ATT&CK Mapping
 * **Tactic:** TA0006 - Credential Access
